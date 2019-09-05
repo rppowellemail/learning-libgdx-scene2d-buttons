@@ -1,14 +1,11 @@
-package com.rppowellemail.libgdx.learning.scene2d.buttons;
+# learning-libgdx-scene2d-buttons
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+How to get Button1 to toggle()/setEnabled() state of Button2.
 
+
+This project was generated using `gdx-setup.jar` (dated 2019-08-05), with 'Desktop' Sub Project, with 'Tools' extension.
+
+```
 public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
 
 	private Stage stage;
@@ -65,3 +62,6 @@ public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
 		stage.dispose();
 	}
 }
+```
+
+How to get Button2 to have its state toggled on/off, same behavior as if it was clicked on
