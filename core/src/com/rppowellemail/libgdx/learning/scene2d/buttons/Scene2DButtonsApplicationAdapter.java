@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
@@ -19,6 +20,9 @@ public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
 	private Button button2;
 	private CheckBox checkBox1;
 
+	private TextButton textButton1;
+	private TextButton textButton2;
+
 	@Override
 	public void create () {
 		stage = new Stage();
@@ -29,12 +33,27 @@ public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
 		button1.setPosition(32, 32);
 		stage.addActor(button1);
 
-		button1.addListener(new ClickListener() {
+//		button1.addListener(new ClickListener() {
+//			@Override
+//			public void clicked(InputEvent event, float x, float y) {
+//				Gdx.app.log("Scene2DButtonsApplicationAdapter", "button2.toggle()");
+//				button2.toggle();
+//			}
+//		});
+
+		button1.addListener(new ClickListener(){
 			@Override
-			public void clicked(InputEvent event, float x, float y) {
-			    Gdx.app.log("Scene2DButtonsApplicationAdapter", "button2.toggle()");
-				button2.toggle();
-				checkBox1.toggle();
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				InputEvent event1 = new InputEvent();
+				event1.setType(InputEvent.Type.touchDown);
+				button2.fire(event1);
+				return true;
+			}
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				InputEvent event2 = new InputEvent();
+				event2.setType(InputEvent.Type.touchUp);
+				button2.fire(event2);
 			}
 		});
 
@@ -45,17 +64,10 @@ public class Scene2DButtonsApplicationAdapter extends ApplicationAdapter {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("Scene2DButtonsApplicationAdapter", "button2 was clicked");
-				button2.toggle();
 			}
 		});
 
 		stage.addActor(button2);
-
-		checkBox1 = new CheckBox("1", skin);
-		checkBox1.setSize(32, 32);
-		checkBox1.setPosition(160, 32);
-
-		stage.addActor(checkBox1);
 
 		Gdx.input.setInputProcessor(stage);
 	}
